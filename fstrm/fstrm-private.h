@@ -17,6 +17,8 @@
 #ifndef FSTRM_PRIVATE_H
 #define FSTRM_PRIVATE_H
 
+#include <config.h>
+
 #include <arpa/inet.h>
 #include <sys/uio.h>
 #include <assert.h>
@@ -38,6 +40,7 @@
 #include "libmy/my_queue.h"
 #include "libmy/read_bytes.h"
 #include "libmy/vector.h"
+#include "libmy/compat.h"
 
 #if defined(__GNUC__)
 # define likely(x)		__builtin_expect(!!(x), 1)

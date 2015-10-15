@@ -290,8 +290,10 @@ fstrm_iothr_init(const struct fstrm_iothr_options *opt,
 	res = pthread_condattr_init(&ca);
 	assert(res == 0);
 
+#ifdef HAVE_CLOCK_GETTIME
 	res = pthread_condattr_setclock(&ca, iothr->clkid_pthread);
 	assert(res == 0);
+#endif
 
 	res = pthread_cond_init(&iothr->cv, &ca);
 	assert(res == 0);

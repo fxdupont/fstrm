@@ -19,6 +19,10 @@
 bool
 fstrm__get_best_monotonic_clock_pthread(clockid_t *c)
 {
+#ifndef HAVE_CLOCK_GETTIME
+	*c = CLOCK_MONOTONIC;
+	return true;
+#else
 	bool res = false;
 	int rc;
 	struct timespec ts;
@@ -71,6 +75,7 @@ out:
 	rc = pthread_condattr_destroy(&ca);
 	assert(rc == 0);
 	return res;
+#endif
 }
 
 bool
